@@ -131,10 +131,9 @@ packages:
   multiselect:
     dependency: "direct main"
     description:
-      name: multiselect
-      sha256: "8d0c4a7b89bee6c5e5e4a25ecba68c796dafc1917492d5606f0caa3947d5905a"
-      url: "https://pub.dev"
-    source: hosted
+      path: ".."
+      relative: true
+    source: path
     version: "0.1.0"
   navigation_builder:
     dependency: transitive

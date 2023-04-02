@@ -31,7 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  multiselect: ^0.1.0
+  multiselect:
+    path: "../"
 
 
   # The following adds the Cupertino Icons font to your application.

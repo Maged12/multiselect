@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(20.0),
             // DropDownMultiSelect comes from multiselect
             child: DropDownMultiSelect(
-              selected_values_style: TextStyle(color: Colors.white),
+              selectedValuesStyle: const TextStyle(color: Colors.white),
               onChanged: (List<String> x) {
                 setState(() {
                   selected =x;

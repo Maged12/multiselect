@@ -135,34 +135,33 @@ class DropDownMultiSelect<T> extends StatefulWidget {
 
 class _DropDownMultiSelectState<TState>
     extends State<DropDownMultiSelect<TState>> {
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
         _theState.rebuild(
-              () => widget.childBuilder != null
+          () => widget.childBuilder != null
               ? widget.childBuilder!(widget.selectedValues)
               : Padding(
-            padding: widget.decoration != null
-                ? widget.decoration!.contentPadding != null
-                ? widget.decoration!.contentPadding!
-                : const EdgeInsets.symmetric(horizontal: 10)
-                : const EdgeInsets.symmetric(horizontal: 20),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Text(
-                widget.selectedValues.isNotEmpty
-                    ? widget.selectedValues
-                    .map((e) => e.toString())
-                    .reduce((a, b) => '$a , $b')
-                    : widget.whenEmpty ?? '',
-                maxLines: 3,
-                style: widget.selectedValuesStyle,
-              ),
-            ),
-          ),
+                  padding: widget.decoration != null
+                      ? widget.decoration!.contentPadding != null
+                          ? widget.decoration!.contentPadding!
+                          : const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Text(
+                      widget.selectedValues.isNotEmpty
+                          ? widget.selectedValues
+                              .map((e) => e.toString())
+                              .reduce((a, b) => '$a , $b')
+                          : widget.whenEmpty ?? '',
+                      maxLines: 3,
+                      style: widget.selectedValuesStyle,
+                    ),
+                  ),
+                ),
         ),
         DropdownButtonFormField<TState>(
           hint: widget.hint,
@@ -180,9 +179,11 @@ class _DropDownMultiSelectState<TState>
               ),
           selectedItemBuilder: (context) {
             return widget.options
-                .map((e) => DropdownMenuItem(
-              child: Container(),
-            ))
+                .map(
+                  (e) => DropdownMenuItem(
+                    child: Container(),
+                  ),
+                )
                 .toList();
           },
           isDense: widget.isDense,
@@ -194,41 +195,41 @@ class _DropDownMultiSelectState<TState>
           items: widget.options
               .map(
                 (x) => DropdownMenuItem<TState>(
-              value: x,
-              onTap: !widget.readOnly
-                  ? () {
-                if (widget.selectedValues.contains(x)) {
-                  var ns = widget.selectedValues;
-                  ns.remove(x);
-                  widget.onChanged(ns);
-                } else {
-                  var ns = widget.selectedValues;
-                  ns.add(x);
-                  widget.onChanged(ns);
-                }
-              }
-                  : null,
-              child: _theState.rebuild(() {
-                return widget.menuItembuilder != null
-                    ? widget.menuItembuilder!(x)
-                    : _SelectRow(
-                  selected: widget.selectedValues.contains(x),
-                  text: x.toString(),
-                  onChange: (isSelected) {
-                    if (isSelected) {
-                      var ns = widget.selectedValues;
-                      ns.add(x);
-                      widget.onChanged(ns);
-                    } else {
-                      var ns = widget.selectedValues;
-                      ns.remove(x);
-                      widget.onChanged(ns);
-                    }
-                  },
-                );
-              }),
-            ),
-          )
+                  value: x,
+                  onTap: !widget.readOnly
+                      ? () {
+                          if (widget.selectedValues.contains(x)) {
+                            var ns = widget.selectedValues;
+                            ns.remove(x);
+                            widget.onChanged(ns);
+                          } else {
+                            var ns = widget.selectedValues;
+                            ns.add(x);
+                            widget.onChanged(ns);
+                          }
+                        }
+                      : null,
+                  child: _theState.rebuild(() {
+                    return widget.menuItembuilder != null
+                        ? widget.menuItembuilder!(x)
+                        : _SelectRow(
+                            selected: widget.selectedValues.contains(x),
+                            text: x.toString(),
+                            onChange: (isSelected) {
+                              if (isSelected) {
+                                var ns = widget.selectedValues;
+                                ns.add(x);
+                                widget.onChanged(ns);
+                              } else {
+                                var ns = widget.selectedValues;
+                                ns.remove(x);
+                                widget.onChanged(ns);
+                              }
+                            },
+                          );
+                  }),
+                ),
+              )
               .toList(),
         ),
       ],
